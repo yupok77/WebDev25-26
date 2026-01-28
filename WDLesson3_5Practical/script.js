@@ -38,7 +38,7 @@ function cirArea(){
       let r = parseFloat( document.getElementById("rad").value);
       let op = document.getElementById("output");
       let A = pi * (r ** 2);
-      op.innerHTML = "Area of circle is: " A;
+      op.innerHTML = "Area of circle is: " + A;
 }
 
 
@@ -46,7 +46,7 @@ function cirPerimeter(){
       let r = parseFloat( document.getElementById("rad").value);
       let op = document.getElementById("output");
       let c = 2*pi*r;
-      op.innerHTML = "Circumference of circle is: "C;
+      op.innerHTML = `Circumference of circle is: ${c}`;
 }
 
 
