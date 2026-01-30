@@ -16,6 +16,6 @@ function cylinder(){
    let v = Math.PI * Math.pow(r, 2) * h; 
 
   /* Challenge 8: Are there any errors in displaying the output? */
-  output.innerHTML = `Volume of the cylinder is ${v}`
+  output.innerHTML = `Volume of the cylinder is ${v.toFixed(2)}`
 
 }
