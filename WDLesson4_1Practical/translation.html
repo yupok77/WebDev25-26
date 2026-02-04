@@ -11,13 +11,13 @@
         let house = ""
         let output = document.getElementById("output");
         // Challenge 9: If the language is equal to "Spanish", set house to "casa"
-        if (lang === "Spanish") {
+        if (lang == "Spanish") {
           house = "casa";
         // Challenge 10: Make a similar decision for the other two languages in the drop down.
-        } else if (lang === "French") {
+        }if (lang == "French") {
           house = "maison";
         // Challenge 11: Display an appropriate message stating "house" in the specified language is given translation.       
-        } else if (lang === "German") {
+        }if (lang == "German") {
           house = "Haus";
         }
         output.innerHTML = `The word "house" in ${lang} is ${house}.`;
