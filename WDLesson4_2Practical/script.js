@@ -13,7 +13,21 @@ function name(){
 */
 
 /* Challenge 2:  Create the function for Challenge 1 scenario */
+function area( ){
+    let l = parseFloat(document.getElementById("length").value);
+    let w = parseFloat(document.getElementById("width").value);
+    let output = document.getElementById("output");
+    let message = "";
+    if (l <= 0 || w <= 0 ){
+      message = "Inappropriate measurements";
+}else{
+  let A = l * w;
+  message = `Area of rectangle with width ${w} and length ${l} is ${A} sq.units`;
+}
 
+output.innerHTML = message;
+//output. innerHTML = '${message} ;
+}
 
 
 /* Challenge 3:  Complete the function for Pets Challenge on pets.html.  
