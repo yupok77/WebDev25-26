@@ -25,7 +25,7 @@ function interest(){
 
   r = r / 100;   
 
-  let build = "";
+  let build = "<h2> Yearly Balance</h2>";
 
   for(let t = 1; t <= year; t+=1){
 
