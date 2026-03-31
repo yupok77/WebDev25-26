@@ -52,7 +52,7 @@ function init(){
   }
   s.innerHTML = build;
   //Challenge 6:  Build cards for the desserts. Place the build in the dessert container.
-  build = ""
+  build = "6"
   for(let i = 0; i < dessert_images.length; i++){
     build += `<div class="card">`;
     build += `<h3>${dessert_titles[i]}</h3>`;
