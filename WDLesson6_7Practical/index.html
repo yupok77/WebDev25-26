@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>WD_6.6 Practical</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="script.js"></script>
+</head>
+
+<body onload="init()">
+    <div id="banner" class="container center">
+        <div style="text-align:center">
+            <h1>NYC Open Data</h1>
+            <h2> Motor Vehicle Collision dataset</h2>
+        </div>
+    </div>
+
+    <div class="container subbanner">
+        <div>
+            <p>This practical challenges students to provide various ways to filter  
+                 Motor Vehicle Collision dataset (crash) retrieved from NYC Open Data.</p>
+            <a class="button" href="https://opendata.cityofnewyork.us/" target="_blank">NYC Open Data</a>
+            <a class="button" target="_blank" href="https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2020-to-Present/erm2-nwe9/about_data"> 311 Service Request</a>
+            <a class="button" target="_blank" href="https://jsoneditoronline.org/"> JSON Editor Online</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Left Panel for Filters -->
+        <div id="leftPanel">
+            <!-- Search by Borough -->
+            <div class="card">
+                <h3>SEARCH By Borough</h3>
+                <input type="text" id="borough" placeholder="Enter Borough (ALL CAP)">
+                <hr>
+            <a class="button" onclick="filterByBorough()"> Search </a>
+            </div>            
+
+            <div class="card">
+                <h3>SEARCH By Contributing Factor</h3>
+                <input type="text" id="factor" placeholder="Enter Factor">
+                <hr>
+            <a class="button" onclick="filterByFactor()">Search</a>
+            </div>
+
+            <div class="card">
+                <h3>SEARCH By Borough AND Factor</h3>
+                <input type="text" id="boroughMulti" placeholder="Enter Borough">
+                <input type="text" id="factorMulti" placeholder="Enter Factor">
+                <hr>
+                <a class="button" onclick="filterMultiple()">Search</a>
+            </div>
+        
+
+        </div>
+
+        <!-- Right Panel for Displaying Cards -->
+        <div id="rightPanel">
+            <h1>311 Service Requests</h1>
+            <div id="result" class="container"></div>
+            <div id="output" class="container"></div>
+        </div>
+    </div>
+
+    <div id="footer" class="container center">
+        <h3>Lesson 6.6 Practical</h3>
+    </div>  
+</body>
+
+</html>
