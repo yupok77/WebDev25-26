@@ -29,30 +29,119 @@ if(data.length > 0){
 
 
 // Challenge 4: Create a function to filter the information and display only the cards that satisfy specfic condition(s).
-function filterByCountyAndAgency(){
-  let county = get("county").value;
-  let agency = get("agency").value;
-  let build = "";
+let data;
+let mapObj;
 
-  for(let i = 0; i < data.length; i++){
-      let violation = data[i];
-      if(violation.county == county && violation.issuing_agency == agency){
-          build += card(violation);
-      }
-  }
-  output.innerHTML = build;
+async function init() {
+
+  let info = await fetch("data.json");
+
+  data = await info.json();
+
+  displayCards(data);
 }
 
-function filterByViolationOrPlate(){
-  let violationType = get("violation_type").value;
-  let plate = get("plate").value;
+function displayCards(records) {
+
+  let leftPanel = get("leftPanel");
+
   let build = "";
 
-  for(let i = 0; i < data.length; i++){
-      let violation = data[i];
-      if(violation.violation == violationType || violation.plate == plate){
-          build += card(violation);
-      }
+  for (let i = 0; i < records.length; i++) {
+    build += card(records[i]);
   }
-  output.innerHTML = build;
+
+  leftPanel.innerHTML = build;
+}
+
+/* ✅ FILTER FUNCTION (your required style) */
+function applyFilters() {
+
+  let borough = get("borough").value.toUpperCase();
+  let ageGroup = get("ageGroup").value;
+  let sex = get("sex").value;
+
+  let build = "";
+
+  for (let i = 0; i < data.length; i++) {
+
+    let arrest = data[i];
+
+    if (
+      (borough === "" || arrest.arrest_boro == borough) &&
+      (ageGroup === "" || arrest.age_group == ageGroup) &&
+      (sex === "" || arrest.perp_sex == sex)
+    ) {
+      build += card(arrest);
+    }
+  }
+
+  get("leftPanel").innerHTML = build;
+}
+
+/* SHOW ALL */
+function showAll() {
+  displayCards(data);
+}
+
+/* MAP FUNCTION */
+function showMap(lat, lon) {
+
+  let location = [lat, lon];
+
+  if (!mapObj) {
+
+    mapObj = L.map("map").setView(location, 13);
+
+    L.tileLayer(
+      "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+      {
+        maxZoom: 18,
+        attribution: "&copy; OpenStreetMap"
+      }
+    ).addTo(mapObj);
+
+  } else {
+
+    mapObj.setView(location, 13);
+  }
+
+  L.marker(location).addTo(mapObj);
+
+  setTimeout(() => {
+    mapObj.invalidateSize();
+  }, 100);
+}
+
+/* CARD FUNCTION */
+function card(arrest) {
+
+  let build = `
+  <div class="card fitted">
+
+      <h3>${arrest.ofns_desc}</h3>
+
+      <hr>
+
+      <p><b>Borough:</b> ${arrest.arrest_boro}</p>
+
+      <p><b>Age Group:</b> ${arrest.age_group}</p>
+
+      <p><b>Race:</b> ${arrest.perp_race}</p>
+
+      <p><b>Sex:</b> ${arrest.perp_sex}</p>
+
+      <p><b>Law Category:</b> ${arrest.law_cat_cd}</p>
+
+      <p><b>Precinct:</b> ${arrest.arrest_precinct}</p>
+
+      <a class="button"
+        onclick="showMap(${arrest.latitude}, ${arrest.longitude})">
+        View Map
+      </a>
+
+  </div>
+  `;
+
+  return build;
 }

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>NYPD Arrest Information</title>
+
+  <link rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <link href="style.css" rel="stylesheet">
+
+  <script src="helper.js"></script>
+  <script src="script.js"></script>
+</head>
+
+<body onload="init()">
+
+  <nav class="container center">
+    <a href="index.html">Home</a>
+    <a href="info.html">Information</a>
+    <a href="analysis.html">Analysis</a>
+  </nav>
+
+  <div id="banner" class="container center banner">
+    <div>
+      <h1>NYPD Arrest Information</h1>
+      <p class="subtitle">
+        Explore arrest records and view locations on a map
+      </p>
+    </div>
+  </div>
+
+  <div class="container">
+    <p>
+      Browse arrest records, filter by borough, age group, and sex,
+      and view arrest locations on a map.
+    </p>
+  </div>
+
+  <div class="container center">
+
+    <input type="text"
+  id="borough"
+  placeholder="Borough (M, Q, B, K, S)">
+
+<a class="button" onclick="filterByBorough()">
+  Filter Borough
+</a>
+
+<br><br>
+
+<select id="ageGroup">
+ 
+  <option value="18-24">18-24</option>
+  <option value="25-44">25-44</option>
+  <option value="45-64">45-64</option>
+  <option value="65+">65+</option>
+</select>
+
+<select id="sex">
+  
+  <option value="M">Male</option>
+  <option value="F">Female</option>
+</select>
+
+<a class="button" onclick="filterByAgeSex()">
+  Filter Age & Sex
+</a>
+
+<a class="button" onclick="showAll()">
+  Show All
+</a>
+
+  </div>
+
+  <div class="container center">
+    <h3 id="result"></h3>
+  </div>
+
+  <div id="output" class="container">
+
+    <div id="leftPanel"></div>
+
+    <div id="map" style="height:500px;"></div>
+
+  </div>
+
+  <div id="footer" class="container center">
+    <p>NYPD Arrests Data Project</p>
+  </div>
+
+</body>
+
+</html>

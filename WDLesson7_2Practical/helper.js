@@ -34,7 +34,7 @@ let location = [lat, lon];
 }
 
 // Challenge 4: Create the function card() to generate an appropriate info card with the button to view map
-function card(info){ 
+function card(info){   
 
   let build = `<div class="card fitted">
                   <h3>${info.on_street_name}</h3>
